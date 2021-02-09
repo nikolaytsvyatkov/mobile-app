@@ -1,14 +1,13 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 
-<head th:replace="fragments/head :: head(MobiLeLeLe)"></head>
+<head th:replace="~{fragments/head :: head(MobiLeLeLe)}"></head>
 
 <body>
 
 <div>
-    <nav th:replace="fragments/nav :: nav-menu"></nav>
+    <nav th:replace="~{fragments/nav :: nav-menu}"></nav>
 </div>
-
 
 <div class="container">
     <h2 class="text-center text-white">Update Offer</h2>
