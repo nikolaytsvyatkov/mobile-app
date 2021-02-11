@@ -1,5 +1,8 @@
 package com.example.mobileapp.model;
 
+import com.example.mobileapp.model.enums.EngineType;
+import com.example.mobileapp.model.enums.TransmissionType;
+import com.example.mobileapp.model.enums.VehicleCategory;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
 import org.hibernate.validator.constraints.Length;
@@ -7,7 +10,6 @@ import org.hibernate.validator.constraints.Length;
 import javax.persistence.*;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.PastOrPresent;
 import javax.validation.constraints.Positive;
 import java.time.LocalDate;
 import java.util.Date;
@@ -36,7 +38,7 @@ public class Offer {
     @NotNull(message = "Vechicle manufacturing year is required.")
 //    @PastOrPresent
     @Min(1900)
-    private Integer year = LocalDate.now().getYear();
+    private Integer year;
 
     @NotNull(message = "Vechicle mileage in km is required.")
     @Positive
@@ -48,15 +50,15 @@ public class Offer {
     @NotNull(message = "Vechicle transmission type is required.")
     private TransmissionType transmission;
 
-    @Length(min = 0, max = 512)
+    @Length(min = 1, max = 512)
+    @NotNull
     private String description;
 
     @NotNull(message = "Vechicle price is required.")
     @Positive
     private Double price;
 
-//    @NotNull(message = "Vechicle imageUrl is required.")
-//    @Length(min = 8, max = 512)
+
     private String imageUrl;
 
     @ManyToOne(optional = true)

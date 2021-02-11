@@ -4,7 +4,7 @@ package com.example.mobileapp.service.impl;
 import com.example.mobileapp.dao.UserRepository;
 import com.example.mobileapp.exception.EntityNotFoundException;
 import com.example.mobileapp.exception.InvalidEntityException;
-import com.example.mobileapp.model.Role;
+import com.example.mobileapp.model.enums.Role;
 import com.example.mobileapp.model.User;
 import com.example.mobileapp.service.UserService;
 import lombok.extern.slf4j.Slf4j;
@@ -63,8 +63,9 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User getUserByUsername(String username) {
-        return userRepo.findByUsername(username).orElseThrow(() ->
-                new EntityNotFoundException(String.format("User '%s' not found.", username)));
+        return userRepo.findByUsername(username).orElseGet(() -> null);
+//                orElseThrow(() ->
+//                new EntityNotFoundException(String.format("User '%s' not found.", username)));
     }
 
     @Override

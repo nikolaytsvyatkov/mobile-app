@@ -62,7 +62,7 @@
         <div class="form-group">
             <label class="text-center text-white font-weight-bold" for="roles">Roles</label>
             <select th:field = "*{roles}"  id="roles" class="form-control" multiple>
-                <option th:each= "role : ${T(com.example.mobileapp.model.Role).values()}"
+                <option th:each= "role : ${T(com.example.mobileapp.model.enums.Role).values()}"
                         th:text="${role}"
                         th:value="${role}"
                 >

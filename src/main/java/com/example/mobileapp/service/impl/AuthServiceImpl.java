@@ -2,7 +2,7 @@ package com.example.mobileapp.service.impl;
 
 
 import com.example.mobileapp.exception.InvalidEntityException;
-import com.example.mobileapp.model.Role;
+import com.example.mobileapp.model.enums.Role;
 import com.example.mobileapp.model.User;
 import com.example.mobileapp.service.AuthService;
 import com.example.mobileapp.service.UserService;
@@ -27,11 +27,15 @@ public class AuthServiceImpl implements AuthService {
     @Override
     public User login(String username, String password) {
         User user = userService.getUserByUsername(username);
-        if(user.getPassword().equals(password)) {
-            return user;
-        } else {
+        if (user == null) {
             return null;
         }
+
+        if(user.getPassword().equals(password)) {
+            return user;
+        }
+
+        return null;
     }
 
 }

@@ -3,7 +3,7 @@ package com.example.mobileapp.init;
 
 import com.example.mobileapp.model.Brand;
 import com.example.mobileapp.model.Model;
-import com.example.mobileapp.model.Role;
+import com.example.mobileapp.model.enums.Role;
 import com.example.mobileapp.model.User;
 import com.example.mobileapp.service.BrandService;
 import com.example.mobileapp.service.OfferService;
@@ -15,11 +15,12 @@ import org.springframework.stereotype.Component;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import java.util.Set;
 
-import static com.example.mobileapp.model.Role.ADMIN;
-import static com.example.mobileapp.model.Role.SELLER;
-import static com.example.mobileapp.model.VehicleCategory.*;
+import static com.example.mobileapp.model.enums.Role.ADMIN;
+import static com.example.mobileapp.model.enums.Role.SELLER;
+import static com.example.mobileapp.model.enums.VehicleCategory.*;
 
 @Component
 @Slf4j
@@ -126,6 +127,7 @@ public class DataInitializer implements CommandLineRunner {
             new User("Ivan", "Pertov", "ivan", "ivan", Set.of(SELLER)),
             new User("Dimitar", "Georgiev", "dimitar", "dimitar", Set.of(Role.BUYER))
     );
+
     @Override
     public void run(String... args) throws Exception {
         if(userService.getUsersCount() == 0) {
