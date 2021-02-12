@@ -17,6 +17,9 @@
             <li class="nav-item">
                 <a class="nav-link" th:href="@{/offers/all}">All Offers</a>
             </li>
+            <li class="nav-item" th:classappend="${#request.getServletPath() == '/offers/favs'}? 'active'">
+                <a class="nav-link" th:href="@{/offers/favs}">Favourites</a>
+            </li>
             <li th:if="${session.user} and ${session.user.getRoles().contains(T(com.example.mobileapp.model.enums.Role).ADMIN)}" class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" th:href="@{/}" id="navbarDropdown" role="button"
                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
